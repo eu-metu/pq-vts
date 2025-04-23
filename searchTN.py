@@ -197,10 +197,10 @@ def _divmodpoly(numPoly, denPoly, p):
 
 p = 8380417
 tempCoefs = {0,1,2,p-2, p-1}
-result11q0 = []
-result11q1 = []
-result11q2 = []
-result11q3 = []
+result8q0 = []
+result8q1 = []
+result8q2 = []
+result8q3 = []
 for i1 in tempCoefs:
     for i2 in tempCoefs:
         for i3 in tempCoefs:
@@ -209,22 +209,20 @@ for i1 in tempCoefs:
                     for i6 in tempCoefs:
                         for i7 in tempCoefs:
                             for i8 in tempCoefs:
-                                for i9 in tempCoefs:
-                                     for i10 in tempCoefs:
-                                         for i11 in tempCoefs:
-                                             temp = [[1,i1], [2,i2], [3,i3], [4,i4], [5,i5], [6,i6], [7,i7], [8,i8], [9,i9], [10,i10],[11,i11]]
+                                             temp = [[1,i1], [2,i2], [3,i3], [4,i4], [5,i5], [6,i6], [7,i7], [8,i8]]
                                              recovered = recover_secret(temp,p)
                                              if recovered in tempCoefs:
-                                                 result11q0.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11]]) 
-                                                 point1 = _lagrange_interpolate_shares(12,temp,p)
+                                                 result8q0.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8]]) 
+                                                 point1 = _lagrange_interpolate_shares(9,temp,p)
                                                  if point1 in tempCoefs:
-                                                     result11q1.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11]]) 
-                                                     point2 = _lagrange_interpolate_shares(13,temp,p)
+                                                     result8q1.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8]]) 
+                                                     point2 = _lagrange_interpolate_shares(10,temp,p)
                                                      if point2 in tempCoefs:
-                                                         result11q2.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11]]) 
-                                                         point3 = _lagrange_interpolate_shares(14,temp,p)
+                                                         result8q2.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8]]) 
+                                                         point3 = _lagrange_interpolate_shares(11,temp,p)
                                                          if point3 in tempCoefs:
-                                                             result11q3.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11]]) 
+                                                             result8q3.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8]]) 
+                                             
                                              
                                                 
                                               
