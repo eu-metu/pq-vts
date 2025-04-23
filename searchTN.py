@@ -195,25 +195,6 @@ def _divmodpoly(numPoly, denPoly, p):
     return np.array(resultPoly,dtype = np.int64)
 
 
-nums = []  # avoid inexact division
-dens = []
-for i in range(3):
-    others = list(x_s)
-    cur = others.pop(i)  
-    temp_num = []
-    for j in others:
-        temp_num.append([1,-j])
-    nums.append(poly_accum(temp_num,p))
-    dens.append(PI(cur - o for o in others))
-den = PI(dens) 
-for i in range(len(x_s)):
-    nums[i] = nums[i]*y_s[i]
-result = _divmodpoly(nums,dens,p)
-result_poly = [0 for i in range(len(result[0]))]
-for i in range(len(result)):
-    result_poly += result[i] % p
-result_poly = result_poly % p
-
 p = 8380417
 tempCoefs = {0,1,2,p-2, p-1}
 result11q0 = []
@@ -246,16 +227,5 @@ for i1 in tempCoefs:
                                                              result11q3.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11]]) 
                                              
                                                 
-                                                
-                                                point2 = _lagrange_interpolate_shares(12,temp,p)
-                                             point3 = _lagrange_interpolate_shares(13,temp,p)
-                                             if point1 in tempCoefs and point2 in tempCoefs and point3 in tempCoefs:
-                                                result10q3.append([recovered, [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10]]) 
-                               
-                                    result8q.append([recover_polynomial(temp,p), recovered, [i1,i2,i3,i4,i5,i6,i7,i8]]) 
-                                       if recovered in tempCoefs:
-                                           if _eval_at_unreversed(recover_polynomial(temp,p),8,p) in tempCoefs: 
-                                               result8q.append([recover_polynomial(temp,p), recovered, [i1,i2,i3,i4,i5,i6,i7,i8]])   
-num = sum([_divmod(nums[i] * y_s[i] % p, dens[i], p)
-            for i in range(k)])
+                                              
  
