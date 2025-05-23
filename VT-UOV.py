@@ -259,11 +259,8 @@ def solve_modular_system(coeff_matrix, result_vector, mod):
 
     return result_vector
 
-solving = []
 
-for i in range(6):
-    print(i)
-    solving.append(solve_modular_system([[f1_shares_x3x4[i][0][1],f1_shares_x3x4[i][1][1]],[f2_shares_x3x4[i][0][1],f2_shares_x3x4[i][1][1]]],[3,4],7))
+
 
 def matrix_shares_mult(matrix,vector_shares,prime):
     result = []
@@ -395,6 +392,7 @@ def vt_uov_Verify(sign_Shares, M, pk_Shares,q):
     for i in range(len(sign_Shares)):
         temp = [eval_verification_Shares(sign_Shares[i][0][0],pk_Shares[0][i],q),eval_verification_Shares(sign_Shares[i][0][0],pk_Shares[1][i],q)]
         t_prime_Shares.append(temp)
+    return   t_verification_Shares == t_prime_Shares   
 def main():
     """Main function"""
     
@@ -411,6 +409,7 @@ def main():
    
     sk_Shares, pk_Shares = vt_uov_Keygen(f1, f2, T, 7)
     sign , sign_Shares, t ,t_Shares = vt_uov_Sign(f1,f2,sk_Shares,T,M,salt,q)
+    vt_uov_Verify(sign_Shares, M, pk_Shares,q)
    
     
     
